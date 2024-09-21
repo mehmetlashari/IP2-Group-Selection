@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Submission</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20px;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Group Members for Table <span id="tableNumber"></span></h1>
+
+    <form id="groupForm">
+        <label for="student1">Student 1 Name:</label>
+        <input type="text" id="student1" name="student1" required>
+
+        <label for="id1">Student 1 ID:</label>
+        <input type="text" id="id1" name="id1" required>
+
+        <label for="student2">Student 2 Name:</label>
+        <input type="text" id="student2" name="student2" required>
+
+        <label for="id2">Student 2 ID:</label>
+        <input type="text" id="id2" name="id2" required>
+
+        <label for="student3">Student 3 Name:</label>
+        <input type="text" id="student3" name="student3" required>
+
+        <label for="id3">Student 3 ID:</label>
+        <input type="text" id="id3" name="id3" required>
+
+        <label for="student4">Student 4 Name:</label>
+        <input type="text" id="student4" name="student4" required>
+
+        <label for="id4">Student 4 ID:</label>
+        <input type="text" id="id4" name="id4" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Get the table number from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const tableNumber = urlParams.get('table');
+        document.getElementById('tableNumber').innerText = tableNumber;
+
+        // Handle form submission
+        document.getElementById('groupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Collect the form data
+            const formData = new FormData(event.target);
+            const groupData = {
+                table: tableNumber,
+                students: [
+                    { name: formData.get('student1'), id: formData.get('id1') },
+                    { name: formData.get('student2'), id: formData.get('id2') },
+                    { name: formData.get('student3'), id: formData.get('id3') },
+                    { name: formData.get('student4'), id: formData.get('id4') }
+                ]
+            };
+
+            // Disable the button to prevent further submissions
+            event.target.querySelector('button').disabled = true;
+
+            // Simulate sending data (e.g., via fetch to the server) and then redirect or update table
+            alert('Group for Table ' + tableNumber + ' has been submitted!');
+            window.location.href = 'index.html'; // Redirect to the table layout page
+        });
+    </script>
+
+</body>
+</html>
