@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Table Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        .layout {
+            position: relative;
+            width: 100%;
+            max-width: 1000px; /* Adjust to fit your image width */
+            margin: 20px auto;
+        }
+        .layout img {
+            width: 100%;
+        }
+        .table {
+            position: absolute;
+            background-color: rgba(0, 255, 0, 0.5); /* Green for available */
+            cursor: pointer;
+            border: 1px solid black;
+        }
+        .taken {
+            background-color: rgba(255, 0, 0, 0.7); /* Red for taken */
+            pointer-events: none; /* Disable click */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Select Your Group Table</h1>
+    <div class="layout">
+        <!-- Replace 'studio-layout.png' with the path to your image -->
+        <img src="studio-layout.png" alt="Studio Layout">
+
+        <!-- Table click areas -->
+        <div id="table1" class="table" style="top: 50px; left: 50px; width: 80px; height: 80px;" onclick="selectTable(1)"></div>
+        <div id="table2" class="table" style="top: 50px; left: 170px; width: 80px; height: 80px;" onclick="selectTable(2)"></div>
+        <div id="table3" class="table" style="top: 50px; left: 290px; width: 80px; height: 80px;" onclick="selectTable(3)"></div>
+        <div id="table4" class="table" style="top: 50px; left: 410px; width: 80px; height: 80px;" onclick="selectTable(4)"></div>
+        <!-- Continue adding tables until all 24 are present -->
+        <div id="table5" class="table" style="top: 140px; left: 50px; width: 80px; height: 80px;" onclick="selectTable(5)"></div>
+        <div id="table6" class="table" style="top: 140px; left: 170px; width: 80px; height: 80px;" onclick="selectTable(6)"></div>
+        <!-- Continue up to table 24... -->
+    </div>
+
+    <script>
+        function selectTable(tableNumber) {
+            // Redirect to a group member entry form (group.html) when a table is clicked
+            window.location.href = 'group.html?table=' + tableNumber;
+        }
+        
+        // Example: Function to mark a table as taken
+        function markTableAsTaken(tableNumber) {
+            document.getElementById('table' + tableNumber).classList.add('taken');
+        }
+
+        // Example of marking tables as taken
+        markTableAsTaken(1); // Mark table 1 as taken
+        markTableAsTaken(5); // Mark table 5 as taken
+    </script>
+
+</body>
+</html>
