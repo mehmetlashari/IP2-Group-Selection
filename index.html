@@ -74,18 +74,20 @@
     </div>
 
     <script>
+        // Redirect to group.html for group input on table click
         function selectTable(tableNumber) {
-            // Redirect to a group member entry form (group.html) when a table is clicked
+            // Redirect to the form page for group submission
             window.location.href = 'group.html?table=' + tableNumber;
         }
 
-        // Example: Function to mark a table as taken
+        // Function to mark a table as taken (you can extend this later with dynamic functionality)
         function markTableAsTaken(tableNumber) {
             document.getElementById('table' + tableNumber).classList.add('taken');
         }
 
-        // Example of marking tables as taken (remove these lines if you want them all available)
-        markTableAsTaken(4); // Mark table 4 as taken (based on your image)
+        // Example of marking tables as taken initially
+        markTableAsTaken(4); // Mark table 4 as taken (for example)
+
     </script>
 
 </body>
